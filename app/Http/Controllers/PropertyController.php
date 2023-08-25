@@ -80,7 +80,7 @@ class PropertyController extends Controller
     public function uploadPhoto(Request $request)
     {
         $attrs = $request->validate([
-            'id' => 'string',
+            'property_id' => 'required|string',
             'name' => 'string'
         ]);
 
