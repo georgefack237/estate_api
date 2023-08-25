@@ -40,3 +40,9 @@ Route::post('mobile/agents/uploadPhoto', [PropertyController::class, 'uploadPhot
 
 Route::get('mobile/users/getAllProperties', [PropertyController::class, 'getAllProperties']);
 Route::post('mobile/users/getAgentProperties', [PropertyController::class, 'getAgentProperties']);
+
+
+
+
+
+Route::post('mobile/users/updateUser', [UserController::class, 'updateUser']);

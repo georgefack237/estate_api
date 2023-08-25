@@ -106,6 +106,32 @@ class UserController extends Controller
 
 
 
+    public function updateUser(Request $request)
+    {
+        //validate fields
+        $attrs = $request->validate([
+            'id' => 'required|string',
+            'phone' => 'required|string',
+            'email' => 'required|string'
+        ]);
+
+        $user = User::where('id', $attrs['id'])->first();
+
+
+        $user->update([
+            'phone'  => $attrs['phone'],
+            'email'  => $attrs['email'],
+        ]);
+
+
+        return response([
+            'data' => $user,
+        ], 200);
+    }
+
+
+
+
     public function logout(Request $request)
     {
         //validate fields
