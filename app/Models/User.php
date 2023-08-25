@@ -31,6 +31,7 @@ class User extends Authenticatable
         'profile_picture'
     ];
 
+    protected $with = ['properties'];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -50,4 +51,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class, 'user_id');
+    }
+
 }

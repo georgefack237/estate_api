@@ -81,8 +81,7 @@ class UserController extends Controller
 
 
         return response([
-            'data' => $user,
-            'token' => auth()->user()->createToken('secret')->plainTextToken
+            'data' => $user
         ], 200);
     }
 
@@ -95,7 +94,7 @@ class UserController extends Controller
             'id' => 'required|string',
         ]);
 
-        $user = User::where('id', $attrs['id'])->withCount(['contacts', 'appointments', 'sales'])->first();
+        $user = User::where('id', $attrs['id'])->first();
 
 
         return response([
@@ -120,7 +119,7 @@ class UserController extends Controller
         $user->tokens()->where('id', $attrs['token_id'])->delete();
 
         return response([
-            'user' => $user
+            'data' => $user
         ], 200);
     }
 

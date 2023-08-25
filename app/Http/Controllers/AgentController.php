@@ -92,7 +92,7 @@ class AgentController extends Controller
             'id' => 'required|string',
         ]);
 
-        $user = User::where('id', $attrs['id'])->withCount(['contacts', 'appointments', 'sales'])->first();
+        $user = User::where('id', $attrs['id'])->first();
 
 
         return response([
@@ -114,9 +114,10 @@ class AgentController extends Controller
         $user->tokens()->where('id', $attrs['token_id'])->delete();
 
         return response([
-            'data' => $user,
-            'token' => auth()->user()->createToken('secret')->plainTextToken
+            'data' => $user
         ], 200);
     }
+
+
 
 }
