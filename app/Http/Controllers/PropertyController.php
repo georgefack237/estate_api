@@ -84,7 +84,7 @@ class PropertyController extends Controller
             'name' => 'string'
         ]);
 
-        $property = Property::find($attrs['property_id'])->first();
+        $property = Property::where('id',$attrs['property_id'])->first();
 
         $photo = $request->file('photo');
 
